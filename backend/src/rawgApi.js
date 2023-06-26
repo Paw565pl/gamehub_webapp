@@ -24,7 +24,7 @@ app.get("/games", (req, res) => {
     .get("/games", {
       params: req.query,
     })
-    .then((response) => res.send(response.data))
+    .then(({ data }) => res.send(data.results))
     .catch((err) => res.send(err));
 });
 
@@ -33,7 +33,7 @@ app.get("/genres", (req, res) => {
     .get("/genres", {
       params: req.query,
     })
-    .then((response) => res.send(response.data))
+    .then(({ data }) => res.send(data.results))
     .catch((err) => res.send(err));
 });
 
@@ -42,7 +42,7 @@ app.get("/platforms/lists/parents", (req, res) => {
     .get("/platforms/lists/parents", {
       params: req.query,
     })
-    .then((response) => res.send(response.data))
+    .then(({ data }) => res.send(data.results))
     .catch((err) => res.send(err));
 });
 
