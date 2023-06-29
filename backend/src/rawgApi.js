@@ -14,8 +14,8 @@ const app = express();
 
 app.use(
   cors({
-    // origin: "http://localhost:5173", DEV
-    origin: "https://gamehub-6pvp.onrender.com",
+    origin: "http://localhost:5173", // DEV
+    // origin: "https://gamehub-6pvp.onrender.com",
     optionsSuccessStatus: 200,
   })
 );
@@ -47,4 +47,6 @@ app.get("/platforms/lists/parents", (req, res) => {
     .catch((err) => res.send(err));
 });
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT, () =>
+  console.log(`Server is listening on port ${process.env.PORT}`)
+);
