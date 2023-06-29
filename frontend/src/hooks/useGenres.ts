@@ -7,10 +7,12 @@ export interface Genre {
   image_background: string;
 }
 
+const apiClient = new ApiClient<Genre>("/genres");
+
 const useGenres = () =>
   useQuery<Genre[], Error>({
     queryKey: ["genres"],
-    queryFn: () => ApiClient.get<Genre[]>("/genres").then((res) => res.data),
+    queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000, // 24 hours
   });
 
