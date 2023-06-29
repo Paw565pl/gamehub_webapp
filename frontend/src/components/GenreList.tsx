@@ -22,7 +22,7 @@ const GenreList = ({ selectedGenreId, onSelectGenre }: Props) => {
       {error && null}
       {isLoading && <Spinner></Spinner>}
       <List>
-        {data.map((genre) => (
+        {data?.map((genre) => (
           <ListItem paddingY={"0.3em"} key={genre.id}>
             <HStack>
               <Image

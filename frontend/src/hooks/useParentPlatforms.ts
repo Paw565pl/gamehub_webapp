@@ -1,4 +1,5 @@
-import useData from "./useData";
+import { useQuery } from "@tanstack/react-query";
+import ApiClient from "../services/ApiClient";
 
 interface Platform {
   id: number;
@@ -6,6 +7,14 @@ interface Platform {
   slug: string;
 }
 
-const useParentPlatforms = () => useData<Platform>("/platforms/lists/parents");
+const useParentPlatforms = () =>
+  useQuery<Platform[], Error>({
+    queryKey: ["parentPlatforms"],
+    queryFn: () =>
+      ApiClient.get<Platform[]>("/platforms/lists/parents").then(
+        (res) => res.data
+      ),
+    staleTime: 24 * 60 * 60 * 1000, // 24 hours
+  });
 
 export default useParentPlatforms;
