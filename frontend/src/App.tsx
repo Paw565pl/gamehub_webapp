@@ -53,6 +53,7 @@ const App = () => {
           <GameHeading gameQuery={gameQuery}></GameHeading>
           <Flex paddingTop={2} flexDirection={["column", "row"]}>
             <PlatformSelector
+              selectedPlatformId={gameQuery.platformId}
               onSelectPlatform={(selectedPlatformId) =>
                 setGameQuery({ ...gameQuery, platformId: selectedPlatformId })
               }
