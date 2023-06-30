@@ -10,7 +10,7 @@ import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/ImageUrl";
 
 interface Props {
-  selectedGenreId: number | null;
+  selectedGenreId?: number;
   onSelectGenre: (genreId: number) => void;
 }
 

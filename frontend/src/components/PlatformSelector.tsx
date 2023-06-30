@@ -11,7 +11,7 @@ import { BsChevronDown } from "react-icons/bs";
 import useParentPlatforms from "../hooks/useParentPlatforms";
 
 interface Props {
-  onSelectPlatform: (platformId: number | null) => void;
+  onSelectPlatform: (platformId: number) => void;
 }
 
 const PlatformSelector = ({ onSelectPlatform }: Props) => {
