@@ -10,6 +10,18 @@ const rawgApi = axios.create({
   },
 });
 
+const sendRequest = (endpoint, queryParams = {}) => {
+  return rawgApi
+    .get(endpoint, { params: queryParams })
+    .then(({ data }) => {
+      return {
+        next: data.next !== null ? true : false,
+        results: data.results,
+      };
+    })
+    .catch((err) => err);
+};
+
 const app = express();
 
 app.use(
@@ -21,30 +33,17 @@ app.use(
 );
 
 app.get("/games", (req, res) => {
-  rawgApi
-    .get("/games", {
-      params: req.query,
-    })
-    .then(({ data }) => res.send(data.results))
-    .catch((err) => res.send(err));
+  sendRequest("/games", req.query).then((response) => res.send(response));
 });
 
 app.get("/genres", (req, res) => {
-  rawgApi
-    .get("/genres", {
-      params: req.query,
-    })
-    .then(({ data }) => res.send(data.results))
-    .catch((err) => res.send(err));
+  sendRequest("/genres", req.query).then((response) => res.send(response));
 });
 
 app.get("/platforms/lists/parents", (req, res) => {
-  rawgApi
-    .get("/platforms/lists/parents", {
-      params: req.query,
-    })
-    .then(({ data }) => res.send(data.results))
-    .catch((err) => res.send(err));
+  sendRequest("/platforms/lists/parents", req.query).then((response) =>
+    res.send(response)
+  );
 });
 
 app.listen(process.env.PORT, () =>

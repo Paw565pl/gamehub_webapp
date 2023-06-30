@@ -18,7 +18,7 @@ const PlatformSelector = ({ onSelectPlatform }: Props) => {
   const [selectedPlatformName, setSelectedPlatformName] = useState<
     string | null
   >(null);
-  const { data, error } = useParentPlatforms();
+  const { data: platforms, error, isSuccess } = useParentPlatforms();
 
   if (error) return null;
   return (
@@ -28,17 +28,18 @@ const PlatformSelector = ({ onSelectPlatform }: Props) => {
           {selectedPlatformName !== null ? selectedPlatformName : "Platforms"}
         </MenuButton>
         <MenuList>
-          {data?.map((platform) => (
-            <MenuItem
-              key={platform.id}
-              onClick={() => {
-                onSelectPlatform(platform.id);
-                setSelectedPlatformName(platform.name);
-              }}
-            >
-              {platform.name}
-            </MenuItem>
-          ))}
+          {isSuccess &&
+            platforms?.results.map((platform) => (
+              <MenuItem
+                key={platform.id}
+                onClick={() => {
+                  onSelectPlatform(platform.id);
+                  setSelectedPlatformName(platform.name);
+                }}
+              >
+                {platform.name}
+              </MenuItem>
+            ))}
         </MenuList>
       </Menu>
     </Box>

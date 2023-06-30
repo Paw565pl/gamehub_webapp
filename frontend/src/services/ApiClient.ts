@@ -1,5 +1,10 @@
 import axios, { AxiosRequestConfig } from "axios";
 
+export interface FetchResponse<T> {
+  next: boolean;
+  results: T[];
+}
+
 const axiosInstance = axios.create({
   baseURL: "http://localhost:3000", // DEV
   // baseURL: "https://gamehub-api.onrender.com/",
@@ -13,7 +18,9 @@ class ApiClient<T> {
   }
 
   getAll = (config?: AxiosRequestConfig) =>
-    axiosInstance.get<T[]>(this.endpoint, config).then((res) => res.data);
+    axiosInstance
+      .get<FetchResponse<T>>(this.endpoint, config)
+      .then((res) => res.data);
 }
 
 export default ApiClient;
