@@ -21,14 +21,14 @@ const GameGrid = ({ gameQuery }: Props) => {
     isSuccess,
   } = useGames(gameQuery);
 
+  if (error) return <Text padding={"1em"}>{error.message}</Text>;
+
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
   const fetchedGamesCount = games?.pages.reduce(
     (acc, page) => acc + page.results.length,
     0
   );
-
-  if (error) return <Text padding={"1em"}>{error.message}</Text>;
 
   return (
     <Box padding="1em">

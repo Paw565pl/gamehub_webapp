@@ -1,6 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 
 export interface FetchResponse<T> {
+  name?: string;
   next: boolean;
   results: T[];
 }
@@ -20,7 +21,9 @@ class ApiClient<T> {
   getAll = (config?: AxiosRequestConfig) =>
     axiosInstance
       .get<FetchResponse<T>>(this.endpoint, config)
-      .then((res) => res.data);
+      .then((res) =>
+        res.data.name === "AxiosError" ? Promise.reject(res.data) : res.data
+      );
 }
 
 export default ApiClient;

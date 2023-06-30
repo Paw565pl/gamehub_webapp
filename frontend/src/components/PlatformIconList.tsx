@@ -14,7 +14,7 @@ import { HStack, Icon } from "@chakra-ui/react";
 import { Platform } from "../hooks/useParentPlatforms";
 
 interface Props {
-  platforms: Platform[];
+  platforms?: Platform[];
 }
 
 const PlatformIconList = ({ platforms }: Props) => {
@@ -32,7 +32,7 @@ const PlatformIconList = ({ platforms }: Props) => {
 
   return (
     <HStack>
-      {platforms.map((platform) => (
+      {platforms?.map((platform) => (
         <Icon
           key={platform.id}
           as={iconMap[platform.slug]}

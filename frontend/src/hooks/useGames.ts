@@ -9,7 +9,7 @@ export interface Game {
   name: string;
   background_image: string;
   metacritic: number;
-  parent_platforms: { platform: Platform }[];
+  parent_platforms?: { platform: Platform }[];
 }
 
 const apiClient = new ApiClient<Game>("/games");
@@ -28,6 +28,8 @@ const useGames = (gameQuery: GameQuery) =>
           page_size: 12,
         },
       }),
+    onError: () => console.log("sus"),
+
     staleTime: ms("24h"),
     getNextPageParam: (lastPage, allPages) => {
       return lastPage.next ? allPages.length + 1 : undefined;
