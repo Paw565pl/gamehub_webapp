@@ -6,8 +6,8 @@ export interface FetchResponse<T> {
 }
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3000", // DEV
-  // baseURL: "https://gamehub-api.onrender.com/",
+  // baseURL: "http://localhost:3000", // DEV
+  baseURL: "https://gamehub-api.onrender.com/",
 });
 
 class ApiClient<T> {
