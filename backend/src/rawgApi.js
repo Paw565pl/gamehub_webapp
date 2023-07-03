@@ -32,28 +32,28 @@ app.use(
   })
 );
 
-app.get("/games/:id", (req, res) => {
-  return rawgApi
+app.get("/games/:id", (req, res) =>
+  rawgApi
     .get("/games/" + req.params.id)
     .then(({ data }) => {
       res.send(data);
     })
-    .catch((err) => err);
-});
+    .catch((err) => res.send(err))
+);
 
-app.get("/games", (req, res) => {
-  sendRequest("/games", req.query).then((response) => res.send(response));
-});
+app.get("/games", (req, res) =>
+  sendRequest("/games", req.query).then((response) => res.send(response))
+);
 
-app.get("/genres", (req, res) => {
-  sendRequest("/genres", req.query).then((response) => res.send(response));
-});
+app.get("/genres", (req, res) =>
+  sendRequest("/genres", req.query).then((response) => res.send(response))
+);
 
-app.get("/platforms/lists/parents", (req, res) => {
+app.get("/platforms/lists/parents", (req, res) =>
   sendRequest("/platforms/lists/parents", req.query).then((response) =>
     res.send(response)
-  );
-});
+  )
+);
 
 app.listen(process.env.PORT, () =>
   console.log(`Server is listening on port ${process.env.PORT}`)
