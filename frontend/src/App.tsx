@@ -5,7 +5,7 @@ import GenreList from "./components/GenreList";
 import NavBar from "./components/NavBar";
 import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
-
+// TODO: add image skeletons for game card and genre list
 const App = () => {
   return (
     <Grid
