@@ -6,7 +6,7 @@ import SearchInput from "./SearchInput";
 
 const NavBar = () => {
   return (
-    <HStack padding="1em">
+    <HStack marginBottom={"1em"}>
       <Link style={{ display: "contents" }} to="/">
         <Icon as={IoGameControllerOutline} boxSize={"2.5em"}></Icon>
         <Show above="sm">

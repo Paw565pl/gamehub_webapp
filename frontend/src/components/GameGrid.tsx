@@ -26,48 +26,46 @@ const GameGrid = () => {
   );
 
   return (
-    <Box padding="1em">
-      <InfiniteScroll
-        style={{
-          overflow: "unset",
-        }}
-        dataLength={fetchedGamesCount || 0}
-        hasMore={hasNextPage || false}
-        next={() => fetchNextPage()}
-        loader={
-          <SimpleGrid
-            columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-            spacing={5}
-            marginTop={5}
-          >
-            {skeletons.map((skeleton) => (
-              <GameCardContainer key={skeleton}>
-                <GameCardSkeleton></GameCardSkeleton>
-              </GameCardContainer>
-            ))}
-          </SimpleGrid>
-        }
-      >
-        <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={5}>
-          {isLoading &&
-            skeletons.map((skeleton) => (
-              <GameCardContainer key={skeleton}>
-                <GameCardSkeleton></GameCardSkeleton>
-              </GameCardContainer>
-            ))}
-          {isSuccess &&
-            games?.pages.map((page, index) => (
-              <React.Fragment key={index}>
-                {page.results.map((game) => (
-                  <GameCardContainer key={game.id}>
-                    <GameCard game={game}></GameCard>
-                  </GameCardContainer>
-                ))}
-              </React.Fragment>
-            ))}
+    <InfiniteScroll
+      style={{
+        overflow: "unset",
+      }}
+      dataLength={fetchedGamesCount || 0}
+      hasMore={hasNextPage || false}
+      next={() => fetchNextPage()}
+      loader={
+        <SimpleGrid
+          columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+          spacing={5}
+          marginTop={5}
+        >
+          {skeletons.map((skeleton) => (
+            <GameCardContainer key={skeleton}>
+              <GameCardSkeleton></GameCardSkeleton>
+            </GameCardContainer>
+          ))}
         </SimpleGrid>
-      </InfiniteScroll>
-    </Box>
+      }
+    >
+      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={5}>
+        {isLoading &&
+          skeletons.map((skeleton) => (
+            <GameCardContainer key={skeleton}>
+              <GameCardSkeleton></GameCardSkeleton>
+            </GameCardContainer>
+          ))}
+        {isSuccess &&
+          games?.pages.map((page, index) => (
+            <React.Fragment key={index}>
+              {page.results.map((game) => (
+                <GameCardContainer key={game.id}>
+                  <GameCard game={game}></GameCard>
+                </GameCardContainer>
+              ))}
+            </React.Fragment>
+          ))}
+      </SimpleGrid>
+    </InfiniteScroll>
   );
 };
 

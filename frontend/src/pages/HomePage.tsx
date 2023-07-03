@@ -18,12 +18,12 @@ const HomePage = () => {
       }}
     >
       <Show above="lg">
-        <GridItem area="aside" paddingX={"5"}>
+        <GridItem area="aside" paddingX={"0.25em"}>
           <GenreList></GenreList>
         </GridItem>
       </Show>
       <GridItem area="main">
-        <Box paddingX={4} marginBottom={5}>
+        <Box marginBottom={5}>
           <GameHeading></GameHeading>
           <Flex paddingTop={2} flexDirection={["column", "row"]}>
             <PlatformSelector></PlatformSelector>

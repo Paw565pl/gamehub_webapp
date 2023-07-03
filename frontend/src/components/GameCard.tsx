@@ -12,12 +12,14 @@ interface Props {
 const GameCard = ({ game }: Props) => {
   return (
     <Card height={"99%"}>
-      <Image
-        src={getCroppedImageUrl(game.background_image)}
-        objectFit={"cover"}
-        loading={"lazy"}
-        alt={game.name + " image"}
-      ></Image>
+      <Link to={`/games/${game.slug}`}>
+        <Image
+          src={getCroppedImageUrl(game.background_image)}
+          objectFit={"cover"}
+          loading={"lazy"}
+          alt={game.name + " image"}
+        ></Image>
+      </Link>
       <CardBody>
         <HStack justifyContent={"space-between"} marginBottom={"0.5em"}>
           <PlatformIconList
