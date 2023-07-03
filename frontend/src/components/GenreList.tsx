@@ -27,6 +27,7 @@ const GenreList = () => {
                 <Image
                   boxSize={"32px"}
                   borderRadius={8}
+                  loading={"lazy"}
                   src={getCroppedImageUrl(genre.image_background)}
                   alt={genre.name + " image"}
                 ></Image>
