@@ -28,6 +28,7 @@ const GenreList = () => {
                   boxSize={"32px"}
                   borderRadius={8}
                   src={getCroppedImageUrl(genre.image_background)}
+                  alt={genre.name + " image"}
                 ></Image>
                 <Button
                   onClick={() => setSelectedGenreId(genre.id)}

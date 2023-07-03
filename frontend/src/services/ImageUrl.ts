@@ -1,6 +1,6 @@
-import noImagePlaceholder from "../assets/no-image-placeholder.svg";
+import noImagePlaceholder from "../assets/no-image-placeholder.jpg";
 
-const getCroppedImageUrl = (url: String) => {
+const getCroppedImageUrl = (url: string) => {
   if (!url) return noImagePlaceholder;
 
   const target = "media/";

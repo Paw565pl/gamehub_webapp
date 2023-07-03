@@ -13,9 +13,8 @@ const GameCard = ({ game }: Props) => {
     <Card height={"99%"}>
       <Image
         src={getCroppedImageUrl(game.background_image)}
-        maxHeight={"300px"}
         objectFit={"cover"}
-        loading={"lazy"}
+        alt={game.name + " image"}
       ></Image>
       <CardBody>
         <HStack justifyContent={"space-between"} marginBottom={"0.5em"}>
