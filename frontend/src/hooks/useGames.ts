@@ -6,6 +6,7 @@ import { Platform } from "./useParentPlatforms";
 
 export interface Game {
   id: number;
+  slug: string;
   name: string;
   background_image: string;
   metacritic: number;
@@ -30,7 +31,6 @@ const useGames = () => {
           page_size: 12,
         },
       }),
-    staleTime: ms("24h"),
     getNextPageParam: (lastPage, allPages) => {
       return lastPage.next ? allPages.length + 1 : undefined;
     },

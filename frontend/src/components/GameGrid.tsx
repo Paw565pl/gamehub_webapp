@@ -28,6 +28,9 @@ const GameGrid = () => {
   return (
     <Box padding="1em">
       <InfiniteScroll
+        style={{
+          overflow: "unset",
+        }}
         dataLength={fetchedGamesCount || 0}
         hasMore={hasNextPage || false}
         next={() => fetchNextPage()}
