@@ -1,17 +1,12 @@
 import { Box, SimpleGrid, Text } from "@chakra-ui/react";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { GameQuery } from "../App";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardContainer from "./GameCardContainer";
 import GameCardSkeleton from "./GameCardSkeleton";
 
-interface Props {
-  gameQuery: GameQuery;
-}
-
-const GameGrid = ({ gameQuery }: Props) => {
+const GameGrid = () => {
   const {
     data: games,
     error,
@@ -19,7 +14,7 @@ const GameGrid = ({ gameQuery }: Props) => {
     fetchNextPage,
     hasNextPage,
     isSuccess,
-  } = useGames(gameQuery);
+  } = useGames();
 
   if (error) return <Text padding={"1em"}>{error.message}</Text>;
 

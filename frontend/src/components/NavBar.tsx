@@ -3,11 +3,7 @@ import { IoGameControllerOutline } from "react-icons/io5";
 import ColorModeSwitch from "./ColorModeSwitch";
 import SearchInput from "./SearchInput";
 
-interface Props {
-  onSearchSubmit: (searchQuery: string) => void;
-}
-
-const NavBar = ({ onSearchSubmit }: Props) => {
+const NavBar = () => {
   return (
     <HStack padding="1em">
       <Link display={"contents"} href="/">
@@ -16,9 +12,7 @@ const NavBar = ({ onSearchSubmit }: Props) => {
           <Text>GameHub</Text>
         </Show>
       </Link>
-      <SearchInput
-        onSearchSubmit={(searchQuery) => onSearchSubmit(searchQuery)}
-      ></SearchInput>
+      <SearchInput></SearchInput>
       <ColorModeSwitch></ColorModeSwitch>
     </HStack>
   );

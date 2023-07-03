@@ -1,19 +1,17 @@
 import { Box, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { useRef } from "react";
 import { BsSearch } from "react-icons/bs";
+import useGameQueryStore from "../store";
 
-interface Props {
-  onSearchSubmit: (searchQuery: string) => void;
-}
-
-const SearchInput = ({ onSearchSubmit }: Props) => {
+const SearchInput = () => {
+  const setSearchQuery = useGameQueryStore((s) => s.setSearchQuery);
   const searchRef = useRef<HTMLInputElement>(null);
 
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        if (searchRef.current) onSearchSubmit(searchRef.current.value);
+        if (searchRef.current) setSearchQuery(searchRef.current.value);
       }}
     >
       <Box paddingX={{ sm: "1.5em", lg: "4.5em" }}>
