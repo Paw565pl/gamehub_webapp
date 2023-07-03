@@ -32,6 +32,15 @@ app.use(
   })
 );
 
+app.get("/games/:id", (req, res) => {
+  return rawgApi
+    .get("/games/" + req.params.id)
+    .then(({ data }) => {
+      res.send(data);
+    })
+    .catch((err) => err);
+});
+
 app.get("/games", (req, res) => {
   sendRequest("/games", req.query).then((response) => res.send(response));
 });
