@@ -19,7 +19,7 @@ const GameGrid = () => {
   if (error) return <Text padding={"1em"}>{error.message}</Text>;
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
-
+  // TODO: usememo
   const fetchedGamesCount = games?.pages.reduce(
     (acc, page) => acc + page.results.length,
     0

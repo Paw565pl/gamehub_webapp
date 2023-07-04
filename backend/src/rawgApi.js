@@ -32,6 +32,10 @@ app.use(
   })
 );
 
+app.get("/games", (req, res) =>
+  sendRequest("/games", req.query).then((response) => res.send(response))
+);
+
 app.get("/games/:id", (req, res) =>
   rawgApi
     .get("/games/" + req.params.id)
@@ -41,8 +45,13 @@ app.get("/games/:id", (req, res) =>
     .catch((err) => res.send(err))
 );
 
-app.get("/games", (req, res) =>
-  sendRequest("/games", req.query).then((response) => res.send(response))
+app.get("/games/:id/movies", (req, res) =>
+  rawgApi
+    .get("/games/" + req.params.id + "/movies")
+    .then(({ data }) => {
+      res.send(data);
+    })
+    .catch((err) => res.send(err))
 );
 
 app.get("/genres", (req, res) =>

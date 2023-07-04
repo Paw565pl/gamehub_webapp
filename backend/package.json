@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "pnpm exec prettier --write .",
+    "dev": "nodemon src/rawgApi.js",
     "start": "node src/rawgApi.js"
   },
   "keywords": [],
@@ -18,6 +19,7 @@
     "express": "^4.18.2"
   },
   "devDependencies": {
+    "nodemon": "^2.0.22",
     "prettier": "2.8.8"
   }
 }
