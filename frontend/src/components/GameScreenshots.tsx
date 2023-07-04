@@ -18,6 +18,7 @@ const GameScreenshots = ({ gameId }: Props) => {
           alt={"game screenshot " + screenshot.id}
           key={screenshot.id}
           src={getCroppedImageUrl(screenshot.image)}
+          loading={"lazy"}
         ></Image>
       ))}
     </SimpleGrid>

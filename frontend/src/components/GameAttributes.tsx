@@ -1,4 +1,4 @@
-import { SimpleGrid, Text } from "@chakra-ui/react";
+import { HStack, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import Game from "../entities/Game";
 import CriticScore from "./CriticScore";
 import DefinitionItem from "./DefinitionItem";
@@ -32,7 +32,10 @@ const GameAttributes = ({ game }: Props) => {
       </DefinitionItem>
       <DefinitionItem term="Publishers">
         {game.publishers?.map((publisher) => (
-          <Text key={publisher.id}>{publisher.name}</Text>
+          <HStack>
+            <Image src={publisher.image_background} boxSize={5}></Image>
+            <Text key={publisher.id}>{publisher.name}</Text>
+          </HStack>
         ))}
       </DefinitionItem>
     </SimpleGrid>
