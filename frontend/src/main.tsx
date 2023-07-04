@@ -5,7 +5,7 @@ import ms from "ms";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
-import "./index.scss";
+import "./index.css";
 import router from "./routes.tsx";
 import theme from "./theme.ts";
 
