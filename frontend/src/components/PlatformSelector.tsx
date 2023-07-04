@@ -1,47 +1,31 @@
-import {
-  Box,
-  Button,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-} from "@chakra-ui/react";
-import { BsChevronDown } from "react-icons/bs";
-import useParentPlatform from "../hooks/useParentPlatform";
 import useParentPlatforms from "../hooks/useParentPlatforms";
 import useGameQueryStore from "../store";
+import SelectorMenu, { MenuItemType } from "./SelectorMenu";
 
 const PlatformSelector = () => {
-  const { data: platforms, error, isSuccess } = useParentPlatforms();
+  const { data: platforms, error } = useParentPlatforms();
+  const platformsMap = platforms?.results.reduce(
+    (acc, platform) => [...acc, { value: platform.id, label: platform.name }],
+    [] as MenuItemType[]
+  );
+
+  // TODO: usememo
 
   const selectedPlarformId = useGameQueryStore((s) => s.gameQuery.platformId);
-  const selectedPlatformName = useParentPlatform(selectedPlarformId)?.name;
+  const selectedPlatformName =
+    platformsMap?.find((platform) => platform.value === selectedPlarformId)
+      ?.label || "Platforms";
 
   const setSelectedPlatformId = useGameQueryStore((s) => s.setPlatformId);
 
   if (error) return null;
 
   return (
-    <Box marginRight={[0, 5]} paddingBottom={[2]}>
-      <Menu>
-        <MenuButton as={Button} rightIcon={<BsChevronDown />} width={["100%"]}>
-          {selectedPlatformName || "Platforms"}
-        </MenuButton>
-        <MenuList>
-          {isSuccess &&
-            platforms?.results.map((platform) => (
-              <MenuItem
-                key={platform.id}
-                onClick={() => {
-                  setSelectedPlatformId(platform.id);
-                }}
-              >
-                {platform.name}
-              </MenuItem>
-            ))}
-        </MenuList>
-      </Menu>
-    </Box>
+    <SelectorMenu
+      activeLabel={selectedPlatformName}
+      items={platformsMap}
+      onClick={setSelectedPlatformId}
+    ></SelectorMenu>
   );
 };
 

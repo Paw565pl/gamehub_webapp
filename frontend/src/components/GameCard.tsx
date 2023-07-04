@@ -12,7 +12,7 @@ interface Props {
 const GameCard = ({ game }: Props) => {
   return (
     <Card height={"99%"}>
-      <Link to={`/games/${game.slug}`}>
+      <Link to={`/games/${game.slug}`} style={{ display: "contents" }}>
         <Image
           src={getCroppedImageUrl(game.background_image)}
           objectFit={"cover"}

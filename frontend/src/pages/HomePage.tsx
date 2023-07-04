@@ -23,7 +23,7 @@ const HomePage = () => {
         </GridItem>
       </Show>
       <GridItem area="main">
-        <Box marginBottom={5}>
+        <Box marginBottom={3}>
           <GameHeading></GameHeading>
           <Flex paddingTop={2} flexDirection={["column", "row"]}>
             <PlatformSelector></PlatformSelector>

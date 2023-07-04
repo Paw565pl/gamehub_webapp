@@ -25,6 +25,8 @@ const GenreList = () => {
             <ListItem paddingY={"0.3em"} key={genre.id}>
               <HStack>
                 <Image
+                  _hover={{ cursor: "pointer" }}
+                  onClick={() => setSelectedGenreId(genre.id)}
                   boxSize={"32px"}
                   borderRadius={8}
                   loading={"lazy"}
@@ -35,7 +37,9 @@ const GenreList = () => {
                   onClick={() => setSelectedGenreId(genre.id)}
                   fontSize={"lg"}
                   variant={"link"}
-                  fontWeight={selectedGenreId === genre.id ? "bold" : "normal"}
+                  fontWeight={
+                    selectedGenreId === genre.id ? "extrabold" : "normal"
+                  }
                   whiteSpace={"normal"}
                   textAlign={"left"}
                 >
