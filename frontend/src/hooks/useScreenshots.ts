@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Screenshot } from "../entities/Screenshot";
+import Screenshot from "../entities/Screenshot";
 import ApiClient, { FetchResponse } from "../services/ApiClient";
 
 const useScreenshots = (id: string | number) => {
