@@ -1,4 +1,4 @@
-import { HStack, Image, SimpleGrid, Text } from "@chakra-ui/react";
+import { HStack, Image, Link, SimpleGrid, Text } from "@chakra-ui/react";
 import Game from "../entities/Game";
 import CriticScore from "./CriticScore";
 import DefinitionItem from "./DefinitionItem";
@@ -37,6 +37,14 @@ const GameAttributes = ({ game }: Props) => {
             <Text key={publisher.id}>{publisher.name}</Text>
           </HStack>
         ))}
+      </DefinitionItem>
+      <DefinitionItem term="Release Date">
+        <Text>{game.released}</Text>
+      </DefinitionItem>
+      <DefinitionItem term="Website">
+        <Link href={game.website} target={"_blank"}>
+          find out more
+        </Link>
       </DefinitionItem>
     </SimpleGrid>
   );

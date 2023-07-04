@@ -6,7 +6,7 @@ const ErrorPage = () => {
   const error = useRouteError();
 
   return (
-    <>
+    <Box padding={"1em"}>
       <NavBar></NavBar>
       <Box padding={"1em 2em"}>
         <Heading>Oops</Heading>
@@ -16,7 +16,7 @@ const ErrorPage = () => {
             : "Something went wrong. Please try again."}
         </Text>
       </Box>
-    </>
+    </Box>
   );
 };
 
