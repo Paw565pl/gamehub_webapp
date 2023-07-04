@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./pages/ErrorPage";
 import GameDetailPage from "./pages/GameDetailPage";
 import HomePage from "./pages/HomePage";
@@ -19,6 +19,10 @@ const router = createBrowserRouter([
         element: <GameDetailPage></GameDetailPage>,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <Navigate to={"/"}></Navigate>,
   },
 ]);
 
