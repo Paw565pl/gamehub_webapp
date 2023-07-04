@@ -25,7 +25,7 @@ const GameScreenshots = ({ gameId }: Props) => {
         showBullets={true}
         showNavs={true}
         autoPlay={true}
-        autoPlayDelay={5}
+        autoPlayDelay={8}
       />
     </Box>
   );
