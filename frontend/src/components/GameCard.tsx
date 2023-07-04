@@ -1,4 +1,11 @@
-import { Card, CardBody, HStack, Heading, Image } from "@chakra-ui/react";
+import {
+  Card,
+  CardBody,
+  HStack,
+  Heading,
+  Image,
+  Skeleton,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import Game from "../entities/Game";
 import getCroppedImageUrl from "../services/ImageUrl";
@@ -14,9 +21,9 @@ const GameCard = ({ game }: Props) => {
     <Card height={"99%"}>
       <Link to={`/games/${game.slug}`} style={{ display: "contents" }}>
         <Image
+          fallback={<Skeleton height={"280px"}></Skeleton>}
           src={getCroppedImageUrl(game.background_image)}
           objectFit={"cover"}
-          loading={"lazy"}
           alt={game.name + " image"}
         ></Image>
       </Link>
