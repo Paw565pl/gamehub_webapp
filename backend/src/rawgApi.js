@@ -46,7 +46,15 @@ app.get("/games/:id", (req, res) =>
 );
 
 app.get("/games/:id/movies", (req, res) =>
-  sendRequest("/games/" + req.params.id + "/movies").then((response) => res.send(response))
+  sendRequest("/games/" + req.params.id + "/movies").then((response) =>
+    res.send(response)
+  )
+);
+
+app.get("/games/:id/screenshots", (req, res) =>
+  sendRequest("/games/" + req.params.id + "/screenshots").then((response) =>
+    res.send(response)
+  )
 );
 
 app.get("/genres", (req, res) =>
