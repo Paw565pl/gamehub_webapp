@@ -46,12 +46,7 @@ app.get("/games/:id", (req, res) =>
 );
 
 app.get("/games/:id/movies", (req, res) =>
-  rawgApi
-    .get("/games/" + req.params.id + "/movies")
-    .then(({ data }) => {
-      res.send(data);
-    })
-    .catch((err) => res.send(err))
+  sendRequest("/games/" + req.params.id + "/movies").then((response) => res.send(response))
 );
 
 app.get("/genres", (req, res) =>

@@ -25,9 +25,9 @@ class ApiClient<T> {
         res.data.name === "AxiosError" ? Promise.reject(res.data) : res.data
       );
 
-  get = (id: string | number) =>
+  get = () =>
     axiosInstance
-      .get<T>(this.endpoint + "/" + id)
+      .get<T>(this.endpoint)
       .then((res) =>
         (res.data as FetchResponse<T>).name === "AxiosError"
           ? Promise.reject(res.data)
