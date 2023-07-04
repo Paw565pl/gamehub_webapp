@@ -5,6 +5,7 @@ import {
   List,
   ListItem,
   Spinner,
+  useColorMode,
 } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/ImageUrl";
@@ -12,6 +13,8 @@ import useGameQueryStore from "../store";
 
 const GenreList = () => {
   const { data: genres, error, isLoading, isSuccess } = useGenres();
+  const { colorMode } = useColorMode();
+
   const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
   const setSelectedGenreId = useGameQueryStore((s) => s.setGenreId);
 
@@ -37,6 +40,7 @@ const GenreList = () => {
                   onClick={() => setSelectedGenreId(genre.id)}
                   fontSize={"lg"}
                   variant={"link"}
+                  color={colorMode === "light" ? "black" : ""}
                   fontWeight={
                     selectedGenreId === genre.id ? "extrabold" : "normal"
                   }

@@ -5,7 +5,6 @@ interface Props {
 }
 
 const CriticScore = ({ score }: Props) => {
-  //   const color = score > 75 ? "#66A329" : score > 50 ? "#826200" : "#CC0000";
   const color = score > 75 ? "green" : score > 50 ? "yellow" : "red";
 
   return (

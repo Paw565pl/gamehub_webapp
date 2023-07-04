@@ -1,5 +1,5 @@
 import { Button, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 interface Props {
   children: string;
@@ -13,7 +13,10 @@ const ExpandableText = ({ children }: Props) => {
 
   if (children.length <= limit) return <Text>{children}</Text>;
 
-  const summary = expanded ? children : children.slice(0, limit) + "...";
+  const summary = useMemo(
+    () => (expanded ? children : children.slice(0, limit) + "..."),
+    [expanded]
+  );
 
   return (
     <Text>

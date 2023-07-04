@@ -1,5 +1,5 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
-import React from "react";
+import { Fragment, useMemo } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
@@ -19,10 +19,10 @@ const GameGrid = () => {
   if (error) return <Text padding={"1em"}>{error.message}</Text>;
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
-  // TODO: usememo
-  const fetchedGamesCount = games?.pages.reduce(
-    (acc, page) => acc + page.results.length,
-    0
+
+  const fetchedGamesCount = useMemo(
+    () => games?.pages.reduce((acc, page) => acc + page.results.length, 0),
+    [games]
   );
 
   return (
@@ -56,13 +56,13 @@ const GameGrid = () => {
           ))}
         {isSuccess &&
           games?.pages.map((page, index) => (
-            <React.Fragment key={index}>
+            <Fragment key={index}>
               {page.results.map((game) => (
                 <GameCardContainer key={game.id}>
                   <GameCard game={game}></GameCard>
                 </GameCardContainer>
               ))}
-            </React.Fragment>
+            </Fragment>
           ))}
       </SimpleGrid>
     </InfiniteScroll>

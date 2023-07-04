@@ -32,9 +32,9 @@ const GameAttributes = ({ game }: Props) => {
       </DefinitionItem>
       <DefinitionItem term="Publishers">
         {game.publishers?.map((publisher) => (
-          <HStack>
+          <HStack key={publisher.id}>
             <Image src={publisher.image_background} boxSize={5}></Image>
-            <Text key={publisher.id}>{publisher.name}</Text>
+            <Text>{publisher.name}</Text>
           </HStack>
         ))}
       </DefinitionItem>
@@ -43,7 +43,7 @@ const GameAttributes = ({ game }: Props) => {
       </DefinitionItem>
       <DefinitionItem term="Website">
         <Link href={game.website} target={"_blank"}>
-          find out more
+          <Text>find out more</Text>
         </Link>
       </DefinitionItem>
     </SimpleGrid>
