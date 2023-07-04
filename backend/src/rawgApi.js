@@ -13,12 +13,10 @@ const rawgApi = axios.create({
 const sendRequest = (endpoint, queryParams = {}) => {
   return rawgApi
     .get(endpoint, { params: queryParams })
-    .then(({ data }) => {
-      return {
-        next: data.next !== null ? true : false,
-        results: data.results,
-      };
-    })
+    .then(({ data }) => ({
+      next: data.next !== null ? true : false,
+      results: data.results,
+    }))
     .catch((err) => err);
 };
 
@@ -39,21 +37,13 @@ app.get("/games", (req, res) =>
 app.get("/games/:id", (req, res) =>
   rawgApi
     .get("/games/" + req.params.id)
-    .then(({ data }) => {
-      res.send(data);
-    })
+    .then(({ data }) => res.send(data))
     .catch((err) => res.send(err))
 );
 
-app.get("/games/:id/movies", (req, res) =>
-  sendRequest("/games/" + req.params.id + "/movies").then((response) =>
-    res.send(response)
-  )
-);
-
-app.get("/games/:id/screenshots", (req, res) =>
-  sendRequest("/games/" + req.params.id + "/screenshots").then((response) =>
-    res.send(response)
+app.get("/games/:id/:resource", (req, res) =>
+  sendRequest(`/games/${req.params.id}/${req.params.resource}`).then(
+    (response) => res.send(response)
   )
 );
 
