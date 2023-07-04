@@ -15,17 +15,19 @@ const GameDetailPage = () => {
   if (isLoading) return <Spinner></Spinner>;
 
   return (
-    <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={"1em"}>
-      <GridItem>
-        <Heading marginBottom={"0.25em"}>{game.name}</Heading>
-        <ExpandableText>{game.description_raw}</ExpandableText>
-        <GameAttributes game={game}></GameAttributes>
-      </GridItem>
-      <GridItem>
-        <GameTrailer gameId={game.id}></GameTrailer>
-        <GameScreenshots gameId={game.id}></GameScreenshots>
-      </GridItem>
-    </SimpleGrid>
+    <>
+      <Heading marginBottom={"0.25em"}>{game.name}</Heading>
+      <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={"1em"}>
+        <GridItem>
+          <GameTrailer gameId={game.id}></GameTrailer>
+          <GameScreenshots gameId={game.id}></GameScreenshots>
+        </GridItem>
+        <GridItem>
+          <ExpandableText>{game.description_raw}</ExpandableText>
+          <GameAttributes game={game}></GameAttributes>
+        </GridItem>
+      </SimpleGrid>
+    </>
   );
 };
 
