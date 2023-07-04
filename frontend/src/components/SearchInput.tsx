@@ -19,7 +19,7 @@ const SearchInput = () => {
         }
       }}
     >
-      <Box paddingX={{ sm: "1.5em", lg: "4.5em" }}>
+      <Box paddingX={{ sm: "1.5em", lg: "8em", xl: "15em" }}>
         <InputGroup>
           <InputLeftElement children={<BsSearch />}></InputLeftElement>
           <Input

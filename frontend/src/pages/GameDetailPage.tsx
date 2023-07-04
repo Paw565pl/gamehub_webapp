@@ -15,7 +15,9 @@ const GameDetailPage = () => {
 
   return (
     <>
-      <Heading marginBottom={"0.5em"}>{game.name}</Heading>
+      <Heading marginLeft={["0", "0", "6em"]} marginBottom={"0.5em"}>
+        {game.name}
+      </Heading>
       <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={"1em"}>
         <GridItem>
           <GameScreenshots gameId={game.id}></GameScreenshots>
@@ -24,7 +26,6 @@ const GameDetailPage = () => {
           <ExpandableText>{game.description_raw}</ExpandableText>
           <GameAttributes game={game}></GameAttributes>
         </GridItem>
-        {game.released}
       </SimpleGrid>
     </>
   );
