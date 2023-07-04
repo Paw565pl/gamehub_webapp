@@ -15,7 +15,7 @@ const GameDetailPage = () => {
 
   return (
     <>
-      <Heading marginLeft={["0", "0", "6em"]} marginBottom={"0.5em"}>
+      <Heading textAlign={["center", "left"]} marginBottom={"0.5em"}>
         {game.name}
       </Heading>
       <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={"1em"}>

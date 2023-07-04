@@ -1,6 +1,0 @@
-wyswietlanie listy wyszukiwan
-naprawa skakania podczas ladowania (skeleton w gamecard)
-zmiana color schema dla color switcha
-image slider dla screenshotow i potencjalnie trailera
-dodac jakies linki do stron producenta czy cos
-klikniecie w logo to reset gamequery
