@@ -1,4 +1,5 @@
-import { Image, SimpleGrid } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
+import SimpleImageSlider from "react-simple-image-slider";
 import useScreenshots from "../hooks/useScreenshots";
 import getCroppedImageUrl from "../services/ImageUrl";
 
@@ -11,17 +12,22 @@ const GameScreenshots = ({ gameId }: Props) => {
 
   if (error || isLoading) return null;
 
+  const images = screenshots?.results.map((screenshot) =>
+    getCroppedImageUrl(screenshot.image)
+  );
+
   return (
-    <SimpleGrid columns={{ sm: 1, md: 2 }} spacing={2}>
-      {screenshots.results.map((screenshot) => (
-        <Image
-          alt={"game screenshot " + screenshot.id}
-          key={screenshot.id}
-          src={getCroppedImageUrl(screenshot.image)}
-          loading={"lazy"}
-        ></Image>
-      ))}
-    </SimpleGrid>
+    <Box style={{ position: "relative", aspectRatio: "1.5/1" }}>
+      <SimpleImageSlider
+        width={"100%"}
+        height={"100%"}
+        images={images}
+        showBullets={true}
+        showNavs={true}
+        autoPlay={true}
+        autoPlayDelay={5}
+      />
+    </Box>
   );
 };
 

@@ -44,6 +44,9 @@ dependencies:
   react-router-dom:
     specifier: ^6.14.1
     version: 6.14.1(react-dom@18.2.0)(react@18.2.0)
+  react-simple-image-slider:
+    specifier: ^2.4.1
+    version: 2.4.1
   sass:
     specifier: ^1.63.6
     version: 1.63.6
@@ -4537,6 +4540,13 @@ packages:
     dependencies:
       "@remix-run/router": 1.7.1
       react: 18.2.0
+    dev: false
+
+  /react-simple-image-slider@2.4.1:
+    resolution:
+      {
+        integrity: sha512-9T/WjsRThJup43QxzH202rLVNqaUK9P8izTiWOfLcc5w3QygU44a9IQUuIwGYiXtWvw2spRRGLRc5Xd62/vfDg==,
+      }
     dev: false
 
   /react-style-singleton@2.2.1(@types/react@18.2.14)(react@18.2.0):
