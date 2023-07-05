@@ -1,4 +1,4 @@
-import { SimpleGrid, Text } from "@chakra-ui/react";
+import { SimpleGrid, Text, useBreakpointValue } from "@chakra-ui/react";
 import { Fragment, useMemo } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import useGames from "../hooks/useGames";
@@ -18,6 +18,13 @@ const GameGrid = () => {
 
   if (error) return <Text padding={"1em"}>{error.message}</Text>;
 
+  const scrollSkeletons = useBreakpointValue({
+    base: 1,
+    sm: 1,
+    md: 2,
+    lg: 3,
+    xl: 4,
+  });
   const skeletons = [...Array(12).keys()];
 
   const fetchedGamesCount = useMemo(
@@ -39,7 +46,7 @@ const GameGrid = () => {
           spacing={5}
           marginTop={5}
         >
-          {skeletons.map((skeleton) => (
+          {[...Array(scrollSkeletons).keys()].map((skeleton) => (
             <GameCardContainer key={skeleton}>
               <GameCardSkeleton></GameCardSkeleton>
             </GameCardContainer>
