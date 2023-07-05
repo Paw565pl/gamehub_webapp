@@ -8,7 +8,7 @@ const PlatformSelector = () => {
 
   const platformsMap = useMemo(
     () =>
-      platforms?.results.reduce(
+      platforms?.results?.reduce(
         (acc, platform) => [
           ...acc,
           { value: platform.id, label: platform.name },

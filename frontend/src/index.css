@@ -1,3 +1,10 @@
 form {
   width: 100%;
 }
+
+#react-burger-menu-btn {
+  top: 1.5rem !important;
+  left: 1rem !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+}

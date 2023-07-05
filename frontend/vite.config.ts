@@ -18,6 +18,8 @@ export default defineConfig({
               return "vendor_react_icons";
             } else if (id.indexOf("react-simple-image-slider") !== -1) {
               return "vendor_react-simple-image-slider";
+            } else if (id.indexOf("react-burger-menu") !== -1) {
+              return "vendor_react-burger-menu";
             }
             return "vendor";
           }

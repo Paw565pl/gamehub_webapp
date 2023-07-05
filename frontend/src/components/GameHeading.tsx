@@ -4,8 +4,8 @@ import useParentPlatform from "../hooks/useParentPlatform";
 import useGameQueryStore from "../store";
 
 const GameHeading = () => {
-  const selectedPlarformId = useGameQueryStore((s) => s.gameQuery.platformId);
-  const selectedPlatformName = useParentPlatform(selectedPlarformId)?.name;
+  const selectedPlatformId = useGameQueryStore((s) => s.gameQuery.platformId);
+  const selectedPlatformName = useParentPlatform(selectedPlatformId)?.name;
 
   const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
   const selectedGenreName = useGenre(selectedGenreId)?.name;
