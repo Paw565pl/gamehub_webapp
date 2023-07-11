@@ -22,7 +22,7 @@ const GenreList = () => {
     <>
       {error && null}
       {isLoading && <Spinner></Spinner>}
-      <List>
+      <List paddingX={"0.25em"}>
         {isSuccess &&
           genres?.results.map((genre) => (
             <ListItem paddingY={"0.3em"} key={genre.id}>
