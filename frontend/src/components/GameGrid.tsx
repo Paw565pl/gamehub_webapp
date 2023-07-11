@@ -27,8 +27,14 @@ const GameGrid = () => {
       xl: 4,
     }) || 1;
 
-  const scrollSkeletons = [...Array(skeletons).keys()];
-  const loadingSkeletons = [...Array(skeletons * 3).keys()];
+  const scrollSkeletons = useMemo(
+    () => [...Array(skeletons).keys()],
+    [skeletons]
+  );
+  const loadingSkeletons = useMemo(
+    () => [...Array(skeletons * 3).keys()],
+    [skeletons]
+  );
 
   const fetchedGamesCount = useMemo(
     () => games?.pages.reduce((acc, page) => acc + page.results.length, 0),
