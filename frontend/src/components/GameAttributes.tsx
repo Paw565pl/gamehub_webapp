@@ -15,9 +15,9 @@ const GameAttributes = ({ game }: Props) => {
       marginY={"1.5em"}
       gap={"2em"}
     >
-      {game.parent_platforms && (
+      {game?.parent_platforms && (
         <DefinitionItem term="Platforms">
-          {game.parent_platforms?.map(({ platform }) => (
+          {game?.parent_platforms?.map(({ platform }) => (
             <Text key={platform.id}>{platform.name}</Text>
           ))}
         </DefinitionItem>
