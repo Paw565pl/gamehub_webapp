@@ -17,7 +17,7 @@ const GameScreenshots = ({ gameId }: Props) => {
   );
 
   return (
-    <Box style={{ position: "relative", aspectRatio: "1.6/1" }}>
+    <Box style={{ position: "relative", aspectRatio: "1.5/1" }}>
       <SimpleImageSlider
         width={"100%"}
         height={"100%"}

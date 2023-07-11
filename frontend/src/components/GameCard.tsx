@@ -21,7 +21,7 @@ const GameCard = ({ game }: Props) => {
     <Card height={"99%"}>
       <Link to={`/games/${game.slug}`} style={{ display: "contents" }}>
         <Image
-          fallback={<Skeleton height={"280px"}></Skeleton>}
+          fallback={<Skeleton aspectRatio={1.5 / 1}></Skeleton>}
           src={getCroppedImageUrl(game.background_image)}
           objectFit={"cover"}
           alt={game.name + " image"}
@@ -30,7 +30,7 @@ const GameCard = ({ game }: Props) => {
       <CardBody>
         <HStack justifyContent={"space-between"} marginBottom={"0.5em"}>
           <PlatformIconList
-            platforms={game.parent_platforms?.map(({ platform }) => platform)}
+            platforms={game?.parent_platforms?.map(({ platform }) => platform)}
           ></PlatformIconList>
           <CriticScore score={game.metacritic}></CriticScore>
         </HStack>

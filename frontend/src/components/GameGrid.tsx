@@ -18,14 +18,17 @@ const GameGrid = () => {
 
   if (error) return <Text padding={"1em"}>{error.message}</Text>;
 
-  const scrollSkeletons = useBreakpointValue({
-    base: 1,
-    sm: 1,
-    md: 2,
-    lg: 3,
-    xl: 4,
-  });
-  const skeletons = [...Array(12).keys()];
+  const skeletons =
+    useBreakpointValue({
+      base: 1,
+      sm: 1,
+      md: 2,
+      lg: 3,
+      xl: 4,
+    }) || 1;
+
+  const scrollSkeletons = [...Array(skeletons).keys()];
+  const loadingSkeletons = [...Array(skeletons * 3).keys()];
 
   const fetchedGamesCount = useMemo(
     () => games?.pages.reduce((acc, page) => acc + page.results.length, 0),
@@ -46,7 +49,7 @@ const GameGrid = () => {
           spacing={5}
           marginTop={5}
         >
-          {[...Array(scrollSkeletons).keys()].map((skeleton) => (
+          {scrollSkeletons.map((skeleton) => (
             <GameCardContainer key={skeleton}>
               <GameCardSkeleton></GameCardSkeleton>
             </GameCardContainer>
@@ -56,7 +59,7 @@ const GameGrid = () => {
     >
       <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={5}>
         {isLoading &&
-          skeletons.map((skeleton) => (
+          loadingSkeletons.map((skeleton) => (
             <GameCardContainer key={skeleton}>
               <GameCardSkeleton></GameCardSkeleton>
             </GameCardContainer>
