@@ -5,7 +5,7 @@ const GameCardSkeleton = () => {
     <Card height={"99%"}>
       <Skeleton aspectRatio={1.5 / 1}></Skeleton>
       <CardBody>
-        <SkeletonText></SkeletonText>
+        <SkeletonText padding={"1em"}></SkeletonText>
       </CardBody>
     </Card>
   );
