@@ -15,36 +15,52 @@ const GameAttributes = ({ game }: Props) => {
       marginY={"1.5em"}
       gap={"2em"}
     >
-      {game?.parent_platforms && (
-        <DefinitionItem term="Platforms">
-          {game?.parent_platforms?.map(({ platform }) => (
+      <DefinitionItem term="Platforms">
+        {game.parent_platforms ? (
+          game.parent_platforms?.map(({ platform }) => (
             <Text key={platform.id}>{platform.name}</Text>
-          ))}
-        </DefinitionItem>
-      )}
+          ))
+        ) : (
+          <Text>N/A</Text>
+        )}
+      </DefinitionItem>
       <DefinitionItem term="Metascore">
-        <CriticScore score={game.metacritic}></CriticScore>
+        {game.metacritic ? (
+          <CriticScore score={game.metacritic}></CriticScore>
+        ) : (
+          <Text>N/A</Text>
+        )}
       </DefinitionItem>
       <DefinitionItem term="Genres">
-        {game.genres?.map((genre) => (
-          <Text key={genre.id}>{genre.name}</Text>
-        ))}
+        {game.genres.length !== 0 ? (
+          game.genres.map((genre) => <Text key={genre.id}>{genre.name}</Text>)
+        ) : (
+          <Text>N/A</Text>
+        )}
       </DefinitionItem>
       <DefinitionItem term="Publishers">
-        {game.publishers?.map((publisher) => (
-          <HStack key={publisher.id}>
-            <Image src={publisher.image_background} boxSize={5}></Image>
-            <Text>{publisher.name}</Text>
-          </HStack>
-        ))}
+        {game.publishers.length !== 0 ? (
+          game.publishers.map((publisher) => (
+            <HStack key={publisher.id}>
+              <Image src={publisher.image_background} boxSize={5}></Image>
+              <Text>{publisher.name}</Text>
+            </HStack>
+          ))
+        ) : (
+          <Text>N/A</Text>
+        )}
       </DefinitionItem>
       <DefinitionItem term="Release Date">
-        <Text>{game.released}</Text>
+        <Text>{game.released || "N/A"}</Text>
       </DefinitionItem>
       <DefinitionItem term="Website">
-        <Link href={game.website} target={"_blank"}>
-          <Text>find out more</Text>
-        </Link>
+        {game.website ? (
+          <Link href={game.website} target={"_blank"}>
+            find out more
+          </Link>
+        ) : (
+          <Text>N/A</Text>
+        )}
       </DefinitionItem>
     </SimpleGrid>
   );
