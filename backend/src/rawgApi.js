@@ -24,8 +24,8 @@ const app = express();
 
 app.use(
   cors({
-    // origin: "http://localhost:5173", // DEV
-    origin: "https://gamehub-6pvp.onrender.com",
+    origin: "http://localhost:5173", // DEV
+    // origin: "https://gamehub-6pvp.onrender.com",
     optionsSuccessStatus: 200,
   })
 );

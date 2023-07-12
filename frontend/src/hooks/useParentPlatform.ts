@@ -1,8 +1,6 @@
 import useParentPlatforms from "./useParentPlatforms";
 
-const useParentPlatform = (id?: number | undefined) => {
-  if (!id) return;
-
+const useParentPlatform = (id?: number) => {
   const { data: platforms } = useParentPlatforms();
   return platforms?.results.find((platform) => platform.id === id);
 };
