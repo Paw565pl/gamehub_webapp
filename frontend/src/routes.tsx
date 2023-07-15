@@ -1,7 +1,5 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./pages/ErrorPage";
-import GameDetailPage from "./pages/GameDetailPage";
-import HomePage from "./pages/HomePage";
 import Layout from "./pages/Layout";
 
 const router = createBrowserRouter([
@@ -12,11 +10,18 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomePage></HomePage>,
+        lazy: async () => {
+          const HomePage = (await import("./pages/HomePage")).default;
+          return { element: <HomePage></HomePage> };
+        },
       },
       {
         path: "games/:slug",
-        element: <GameDetailPage></GameDetailPage>,
+        lazy: async () => {
+          const GameDetailPage = (await import("./pages/GameDetailPage"))
+            .default;
+          return { element: <GameDetailPage></GameDetailPage> };
+        },
       },
     ],
   },

@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "pnpm exec prettier --write .",
-    "dev": "nodemon src/rawgApi.js",
-    "start": "node src/rawgApi.js"
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js"
   },
   "keywords": [],
   "author": "",
@@ -16,10 +16,10 @@
     "axios": "^1.4.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "nodemon": "^3.0.1"
+    "express": "^4.18.2"
   },
   "devDependencies": {
+    "nodemon": "^3.0.1",
     "prettier": "2.8.8"
   }
 }
