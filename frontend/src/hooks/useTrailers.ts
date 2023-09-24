@@ -6,7 +6,7 @@ const useTrailers = (id: string | number) => {
   const apiClient = new ApiClient<Trailer>(`/games/${id}/movies`);
 
   return useQuery<FetchResponse<Trailer>, Error>({
-    queryKey: ["trailers", id],
+    queryKey: ["trailer", id],
     queryFn: apiClient.getAll,
   });
 };
