@@ -11,8 +11,8 @@ const GameScreenshots = ({ gameId }: Props) => {
   const { data: screenshots, error, isLoading } = useScreenshots(gameId);
 
   if (error) throw error;
-  
-  if (isLoading) return <Spinner/>
+
+  if (isLoading) return <Spinner />;
 
   if (screenshots.results.length === 0)
     return (

@@ -11,7 +11,7 @@ const GameDetailPage = () => {
 
   if (error) throw error;
 
-  if (isLoading) return null
+  if (isLoading) return null;
 
   return (
     <>
