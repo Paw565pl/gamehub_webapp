@@ -1,9 +1,18 @@
-import { Box, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import {
+  Box,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  useColorMode,
+} from "@chakra-ui/react";
 import { useRef } from "react";
 import { BsSearch } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 import useGameQueryStore from "../store";
 
 const SearchInput = () => {
+  const navigate = useNavigate();
+  const { colorMode } = useColorMode();
   const setSearchQuery = useGameQueryStore((s) => s.setSearchQuery);
   const searchRef = useRef<HTMLInputElement>(null);
 
@@ -11,6 +20,7 @@ const SearchInput = () => {
     e.preventDefault();
     if (searchRef.current?.value) {
       setSearchQuery(searchRef.current.value);
+      navigate("/");
     }
   };
 
@@ -28,6 +38,7 @@ const SearchInput = () => {
             borderRadius={20}
             placeholder="Search games..."
             variant={"filled"}
+            focusBorderColor={colorMode === "dark" ? "white" : "black"}
           />
         </InputGroup>
       </Box>
