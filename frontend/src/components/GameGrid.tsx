@@ -29,16 +29,16 @@ const GameGrid = () => {
 
   const scrollSkeletons = useMemo(
     () => [...Array(skeletons).keys()],
-    [skeletons]
+    [skeletons],
   );
   const loadingSkeletons = useMemo(
     () => [...Array(skeletons * 3).keys()],
-    [skeletons]
+    [skeletons],
   );
 
   const fetchedGamesCount = useMemo(
     () => games?.pages.reduce((acc, page) => acc + page.results.length, 0),
-    [games]
+    [games],
   );
 
   return (

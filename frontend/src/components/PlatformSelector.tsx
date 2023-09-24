@@ -15,9 +15,9 @@ const PlatformSelector = () => {
           ...acc,
           { value: platform.id, label: platform.name },
         ],
-        [] as MenuItemType[]
+        [] as MenuItemType[],
       ),
-    [platforms]
+    [platforms],
   );
 
   const selectedPlarformId = useGameQueryStore((s) => s.gameQuery.platformId);

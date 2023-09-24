@@ -15,7 +15,7 @@ const ExpandableText = ({ children }: Props) => {
 
   const summary = useMemo(
     () => (expanded ? children : children.slice(0, limit) + "..."),
-    [expanded]
+    [expanded],
   );
 
   return (

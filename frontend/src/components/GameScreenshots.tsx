@@ -13,7 +13,7 @@ const GameScreenshots = ({ gameId }: Props) => {
   if (error || isLoading) return null;
 
   const images = screenshots?.results.map((screenshot) =>
-    getCroppedImageUrl(screenshot.image)
+    getCroppedImageUrl(screenshot.image),
   );
 
   if (screenshots.results.length === 0)

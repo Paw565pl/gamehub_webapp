@@ -24,39 +24,41 @@ const app = express();
 
 app.use(
   cors({
-    // origin: "http://localhost:5173", // DEV
-    origin: "https://gamehub-6pvp.onrender.com",
+    origin:
+      process.env.NODE_ENV === "dev"
+        ? "http://localhost:5173"
+        : "https://gamehub-6pvp.onrender.com",
     optionsSuccessStatus: 200,
-  })
+  }),
 );
 
 app.get("/games", (req, res) =>
-  sendRequest("/games", req.query).then((response) => res.send(response))
+  sendRequest("/games", req.query).then((response) => res.send(response)),
 );
 
 app.get("/games/:id", (req, res) =>
   rawgApi
     .get("/games/" + req.params.id)
     .then(({ data }) => res.send(data))
-    .catch((err) => res.send(err))
+    .catch((err) => res.send(err)),
 );
 
 app.get("/games/:id/:resource", (req, res) =>
   sendRequest(`/games/${req.params.id}/${req.params.resource}`).then(
-    (response) => res.send(response)
-  )
+    (response) => res.send(response),
+  ),
 );
 
 app.get("/genres", (req, res) =>
-  sendRequest("/genres", req.query).then((response) => res.send(response))
+  sendRequest("/genres", req.query).then((response) => res.send(response)),
 );
 
 app.get("/platforms/lists/parents", (req, res) =>
   sendRequest("/platforms/lists/parents", req.query).then((response) =>
-    res.send(response)
-  )
+    res.send(response),
+  ),
 );
 
 app.listen(process.env.PORT, () =>
-  console.log(`Server is listening on port ${process.env.PORT}`)
+  console.log(`Server is listening on port ${process.env.PORT}`),
 );

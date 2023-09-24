@@ -7,8 +7,10 @@ export interface FetchResponse<T> {
 }
 
 const axiosInstance = axios.create({
-  // baseURL: "http://localhost:3000", // DEV
-  baseURL: "https://gamehub-api.onrender.com/",
+  baseURL:
+    import.meta.env.VITE_ENV === "dev"
+      ? "http://localhost:3000"
+      : "https://gamehub-api.onrender.com/",
 });
 
 class ApiClient<T> {
@@ -22,7 +24,7 @@ class ApiClient<T> {
     axiosInstance
       .get<FetchResponse<T>>(this.endpoint, config)
       .then((res) =>
-        res.data.name === "AxiosError" ? Promise.reject(res.data) : res.data
+        res.data.name === "AxiosError" ? Promise.reject(res.data) : res.data,
       );
 
   get = () =>
@@ -31,7 +33,7 @@ class ApiClient<T> {
       .then((res) =>
         (res.data as FetchResponse<T>).name === "AxiosError"
           ? Promise.reject(res.data)
-          : res.data
+          : res.data,
       );
 }
 
