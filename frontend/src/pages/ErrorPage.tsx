@@ -7,7 +7,7 @@ const ErrorPage = () => {
       <NavBar></NavBar>
       <Box padding={"1em 2em"}>
         <Heading>Oops</Heading>
-        <Text>Something went wrong. Please try again</Text>
+        <Text>Something went wrong. Please try again.</Text>
       </Box>
     </Box>
   );
