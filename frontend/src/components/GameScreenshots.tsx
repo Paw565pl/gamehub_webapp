@@ -12,10 +12,6 @@ const GameScreenshots = ({ gameId }: Props) => {
 
   if (error || isLoading) return null;
 
-  const images = screenshots?.results.map((screenshot) =>
-    getCroppedImageUrl(screenshot.image),
-  );
-
   if (screenshots.results.length === 0)
     return (
       <Image
@@ -25,6 +21,8 @@ const GameScreenshots = ({ gameId }: Props) => {
         alt={"no image placeholder"}
       ></Image>
     );
+
+  const images = screenshots.results.map((screenshot) => screenshot.image);
 
   return (
     <Box style={{ position: "relative", aspectRatio: "1.5/1" }}>
