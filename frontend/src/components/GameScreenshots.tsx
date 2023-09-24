@@ -1,4 +1,4 @@
-import { Box, Image, Skeleton } from "@chakra-ui/react";
+import { Box, Image, Skeleton, Spinner } from "@chakra-ui/react";
 import SimpleImageSlider from "react-simple-image-slider";
 import useScreenshots from "../hooks/useScreenshots";
 import getCroppedImageUrl from "../services/ImageUrl";
@@ -10,7 +10,9 @@ interface Props {
 const GameScreenshots = ({ gameId }: Props) => {
   const { data: screenshots, error, isLoading } = useScreenshots(gameId);
 
-  if (error || isLoading) return null;
+  if (error) throw error;
+  
+  if (isLoading) return <Spinner/>
 
   if (screenshots.results.length === 0)
     return (
