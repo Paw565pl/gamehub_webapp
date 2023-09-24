@@ -6,7 +6,7 @@ const useGame = (id: string | number) => {
   const apiClient = new ApiClient<Game>(`/games/${id}`);
 
   return useQuery<Game, Error>({
-    queryKey: ["games", id],
+    queryKey: ["game", id],
     queryFn: apiClient.get,
   });
 };
