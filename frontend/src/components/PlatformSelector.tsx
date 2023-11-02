@@ -6,8 +6,6 @@ import SelectorMenu, { MenuItemType } from "./SelectorMenu";
 const PlatformSelector = () => {
   const { data: platforms, error } = useParentPlatforms();
 
-  if (error) return null;
-
   const platformsMap = useMemo(
     () =>
       platforms?.results?.reduce(
@@ -27,11 +25,13 @@ const PlatformSelector = () => {
 
   const setSelectedPlatformId = useGameQueryStore((s) => s.setPlatformId);
 
+  if (error) return null;
+
   return (
     <SelectorMenu
       activeLabel={selectedPlatformName}
       items={platformsMap}
-      onClick={setSelectedPlatformId}
+      onClick={setSelectedPlatformId as (value: string | number) => void}
     ></SelectorMenu>
   );
 };

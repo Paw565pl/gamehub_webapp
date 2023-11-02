@@ -16,8 +16,6 @@ const GameGrid = () => {
     isSuccess,
   } = useGames();
 
-  if (error) return <Text padding={"1em"}>{error.message}</Text>;
-
   const skeletons =
     useBreakpointValue({
       base: 1,
@@ -40,6 +38,8 @@ const GameGrid = () => {
     () => games?.pages.reduce((acc, page) => acc + page.results.length, 0),
     [games],
   );
+
+  if (error) return <Text padding={"1em"}>{error.message}</Text>;
 
   return (
     <InfiniteScroll

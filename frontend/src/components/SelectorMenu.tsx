@@ -16,7 +16,7 @@ export interface MenuItemType {
 interface Props {
   activeLabel: string;
   items: MenuItemType[] | undefined;
-  onClick: Function;
+  onClick: (value: string | number) => void;
 }
 
 const SelectorMenu = ({ activeLabel, items, onClick }: Props) => {

@@ -23,7 +23,7 @@ const SortSelector = () => {
     <SelectorMenu
       activeLabel={selectedSortOrderLabel}
       items={sortOrders}
-      onClick={setSelectedSortOrder}
+      onClick={setSelectedSortOrder as (value: string | number) => void}
     ></SelectorMenu>
   );
 };
